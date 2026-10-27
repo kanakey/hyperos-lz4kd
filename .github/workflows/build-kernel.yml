@@ -1,4 +1,4 @@
-name: Build Xiaomi 14 LZ4KD Kernel from ACK
+name: Build MyDevice LZ4KD Kernel from ACK
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
       KERNEL_COMMIT:
         description: 'Specific Kernel Commit (Leave empty to use branch HEAD)'
         required: false
-        default: '0c3d559bcd85c64dae9c9c9687abbe5347fff3ad'
+        default: 'd8b333a26'
   push:
     branches:
       - main
@@ -61,7 +61,7 @@ jobs:
           repo init --depth=1 -u https://android.googlesource.com/kernel/manifest -b "common-$TARGET_TAG" --repo-rev=v2.16
           repo --trace sync -c -j$(nproc --all) --no-tags
 
-          TARGET_COMMIT="${{ github.event.inputs.KERNEL_COMMIT || '0c3d559bcd85c64dae9c9c9687abbe5347fff3ad' }}"
+          TARGET_COMMIT="${{ github.event.inputs.KERNEL_COMMIT || 'd8b333a26' }}"
           if [ -n "$TARGET_COMMIT" ]; then
             echo "[+] Pinning common repo to exact commit: $TARGET_COMMIT"
             cd common
