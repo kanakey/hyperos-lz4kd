@@ -1,4 +1,4 @@
-name: Build MyDevice LZ4KD Kernel from ACK
+name: Build k70pro LZ4KD Kernel from ACK
 
 on:
   workflow_dispatch:
